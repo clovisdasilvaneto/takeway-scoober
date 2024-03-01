@@ -16,7 +16,9 @@ const drawLogo = keyframes`
 `;
 
 export const AnimatedIcon = styled("svg")<{ duration?: number }>`
-  path {
+  max-width: 100%;
+
+  .animatedPath {
     fill: transparent;
     stroke-width: 1px;
     stroke: ${({ theme }) => theme.palette.common.white};

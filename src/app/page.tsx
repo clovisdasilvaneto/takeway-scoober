@@ -1,24 +1,15 @@
-"use client";
-import {
-  decrement,
-  increment,
-  selectApi,
-} from "@/containers/SinglePlayer/slice";
-import { Button } from "@mui/material";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { Box } from "@mui/material";
 
-export default function ProductName() {
-  // Initialize the store with the product information
-  const store = useStore();
-  const count = useSelector(selectApi);
-  const dispatch = useDispatch();
-
+export default function HomePage() {
   return (
     <>
-      <Button onClick={() => dispatch(increment())}>increment</Button>
-      <Button onClick={() => dispatch(decrement())}>decrement</Button>
+      <Header description="Playing with nevinha" />
 
-      {count.value}
+      <Box flex={1}>asd</Box>
+
+      <Footer />
     </>
   );
 }

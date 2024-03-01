@@ -1,4 +1,7 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import RootProvider from "@/providers/RootProvider";
+import { Box } from "@mui/material";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
