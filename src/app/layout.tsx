@@ -1,5 +1,4 @@
 import RootProvider from "@/providers/RootProvider";
-import GlobalStyles from "@/theme/globals";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,10 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <RootProvider>
-          {GlobalStyles}
-          {children}
-        </RootProvider>
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );
