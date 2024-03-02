@@ -17,4 +17,9 @@ export const GamePlayContainer = styled(Box)`
   flex-direction: column;
   padding-bottom: 4rem;
   gap: 1rem;
+
+  @media only screen and (max-width: ${({ theme }) =>
+      theme.breakpoints.values.md}px) {
+    gap: 3rem;
+  }
 `;

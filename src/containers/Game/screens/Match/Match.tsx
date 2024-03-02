@@ -8,10 +8,10 @@ function Match() {
     <>
       <GamePlayContainer>
         <Attemp isLocal />
-        {/* <Attemp isLocal={false} />
+        <Attemp isLocal={false} />
         <Attemp isLocal />
         <Attemp isLocal={false} />
-        <Attemp isLocal /> */}
+        <Attemp isLocal />
       </GamePlayContainer>
 
       <GameOptions />
