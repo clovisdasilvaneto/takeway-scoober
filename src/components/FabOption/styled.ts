@@ -1,3 +1,5 @@
+"use client";
+
 import { Fab, Palette, styled } from "@mui/material";
 
 export const FabOptionContent = styled(Fab, {

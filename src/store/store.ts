@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import slice from "@/containers/SinglePlayer/slice";
+import gameInfo from "@/modules/gameInfo";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      counter: slice,
+      gameInfo,
     },
   });
 };

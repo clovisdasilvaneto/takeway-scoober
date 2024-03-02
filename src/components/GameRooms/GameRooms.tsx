@@ -1,21 +1,34 @@
-import React from 'react'
-import { GameRoomsContainer } from './styled'
-import MenuItem from '../MenuItem'
-import { users } from './constant'
-import { Typography } from '@mui/material'
+"use client";
 
-function GameRooms() {
-    return (
-        <>
-            <Typography fontSize={14} paragraph fontWeight={700} color="primary.dark">Choose your game room</Typography>
+import React from "react";
+import { GameRoomsContainer } from "./styled";
+import MenuItem from "../MenuItem";
+import { Typography } from "@mui/material";
+import { Room } from "@/providers/RoomsProvider/types";
 
-            <GameRoomsContainer>
-                {users.map((user, index) => (
-                    <MenuItem key={`${user}-${index}`} label={user.name} onClick={() => null} />
-                ))}
-            </GameRoomsContainer>
-        </>
-    )
+interface GameRoomsProps {
+  rooms: Room[];
+  onRoomSelected: () => void;
 }
 
-export default GameRooms
+function GameRooms({ rooms, onRoomSelected }: GameRoomsProps) {
+  return (
+    <>
+      <Typography fontSize={14} paragraph fontWeight={700} color="primary.dark">
+        Choose your game room
+      </Typography>
+
+      <GameRoomsContainer>
+        {rooms.map((room) => (
+          <MenuItem
+            key={`${room.name}-${room.id}`}
+            label={room.name}
+            onClick={onRoomSelected}
+          />
+        ))}
+      </GameRoomsContainer>
+    </>
+  );
+}
+
+export default GameRooms;

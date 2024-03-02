@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
-import { AttempWrapper } from "./styled";
 import { Box } from "@mui/material";
+
+import { AttempWrapper } from "./styled";
 import FabOption from "../FabOption";
 import Output from "../Output";
 import { getAttempVariant } from "./utils";

@@ -1,6 +1,7 @@
 import React from "react";
-import { FooterWrapper } from "./styled";
 import { Box, Typography } from "@mui/material";
+
+import { FooterWrapper } from "./styled";
 import JustTakeAwayIcon from "../Icons/JustTakeAwayIcon";
 
 function Footer() {

@@ -1,3 +1,5 @@
+"use client";
+
 import { Fab, styled } from "@mui/material";
 
 export const FabButtonWrapper = styled(Fab)`

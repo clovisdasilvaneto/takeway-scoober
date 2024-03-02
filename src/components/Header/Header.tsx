@@ -4,10 +4,10 @@ import { Box, Typography } from "@mui/material";
 import { LogoIcon } from "../Icons";
 
 interface HeaderProps {
-  username: string;
+  description: string;
 }
 
-function Header({ username }: HeaderProps) {
+function Header({ description }: HeaderProps) {
   return (
     <HeaderWrapper component="header">
       <LogoIcon />
@@ -19,7 +19,7 @@ function Header({ username }: HeaderProps) {
           variant="h6"
           component="h1"
         >
-          Playing with {username}
+          {description}
         </Typography>
 
         <Typography
