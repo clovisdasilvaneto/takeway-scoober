@@ -31,10 +31,14 @@ export enum SocketEvents {
   LOGIN = "login",
   JOIN_ROOM = "joinRoom",
   LEAVE_ROOM = "leaveRoom",
+  LETS_PLAY = "letsPlay",
+  SEND_NUMBER = "sendNumber",
 
   // On events
   MESSAGE = "message",
   ERROR = "notAllowedError",
   PRICE = "price",
   ON_READY = "onReady",
+  RANDOM_NUMBER = "randomNumber",
+  ACTIVATE_YOUR_TURN = "activateYourTurn",
 }

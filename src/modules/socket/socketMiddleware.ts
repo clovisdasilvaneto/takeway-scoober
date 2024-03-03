@@ -2,7 +2,7 @@ import { Middleware } from "redux";
 import { initSocket } from "./socket";
 import SocketFactory from "@/services/socket";
 import type { SocketInterface } from "@/services/socket";
-import { MiddlewareHandlerParams, SocketEvents } from "./types";
+import { MiddlewareHandlerParams } from "./types";
 import { initSocketHandler } from "./socketMiddlewareHandlers";
 
 const handlers = [

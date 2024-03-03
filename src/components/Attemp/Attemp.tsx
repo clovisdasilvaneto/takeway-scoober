@@ -1,18 +1,21 @@
 "use client";
 
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 
 import { AttempWrapper } from "./styled";
 import FabOption from "../FabOption";
 import Output from "../Output";
 import { getAttempVariant } from "./utils";
 
-interface AttempProps {
+export interface AttempProps {
   isLocal: boolean;
+  selectedOption: number;
+  number: number;
+  result: number;
 }
 
-function Attemp({ isLocal }: AttempProps) {
+function Attemp({ isLocal, selectedOption, number, result }: AttempProps) {
   const { Avatar, color, direction } = getAttempVariant(isLocal);
 
   return (
@@ -20,10 +23,12 @@ function Attemp({ isLocal }: AttempProps) {
       {Avatar}
 
       <Box display="flex" flexDirection="column" gap={1}>
-        <FabOption color={color} label="1" />
+        <FabOption color={color} label={selectedOption.toString()} />
 
-        <Output value="[ ( -1 + 19 )  / 3 ] = 6" />
-        <Output value="6" />
+        <Output
+          value={`[ (${selectedOption} + ${number} )  / 3 ] = ${result}`}
+        />
+        <Output value={result.toString()} />
       </Box>
     </AttempWrapper>
   );

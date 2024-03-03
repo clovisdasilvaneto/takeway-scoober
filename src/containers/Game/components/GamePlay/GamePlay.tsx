@@ -12,7 +12,7 @@ function GamePlay() {
   const isReady = useSelector(selectIsReady);
 
   return (
-    <GamePlayWrapper>
+    <GamePlayWrapper component="article">
       {/* TODO: check for gameover and win */}
       {isReady ? <Match /> : <SelectGameRoom />}
     </GamePlayWrapper>

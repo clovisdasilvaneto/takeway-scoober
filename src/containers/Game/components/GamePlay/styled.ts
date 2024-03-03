@@ -16,6 +16,7 @@ export const GamePlayContainer = styled(Box)`
   justify-content: flex-end;
   flex-direction: column;
   padding-bottom: 4rem;
+  position: relative;
   gap: 1rem;
 
   @media only screen and (max-width: ${({ theme }) =>

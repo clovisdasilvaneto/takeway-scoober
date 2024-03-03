@@ -8,7 +8,7 @@ import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Rooms = () => {
   const rooms = useContext(RoomsContext);
@@ -35,7 +35,7 @@ const Rooms = () => {
   };
 
   return (
-    <Box>
+    <Box component="aside" pt={3} aria-label="choose your room">
       <GameRooms
         selectedRoom={selectedRoom}
         rooms={rooms}

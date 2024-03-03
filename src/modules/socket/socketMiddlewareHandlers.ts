@@ -1,12 +1,24 @@
 import { toast } from "react-toastify";
-import { setIsReady, setRoom } from "../gameInfo/gameInfo";
-import { connectionEstablished, connectionLost } from "./socket";
+import {
+  changeTurn,
+  setCurrentNumber,
+  setIsReady,
+  setRoom,
+} from "../gameInfo/gameInfo";
+import {
+  connectionEstablished,
+  connectionLost,
+  selectSocketId,
+} from "./socket";
 import {
   MiddlewareHandlerParams,
   SocketEvents,
   initSocketActionPayload,
   onMessageEvent,
 } from "./types";
+import { IAttemp } from "../gameMoves/types";
+import { addMove } from "../gameMoves/gameMoves";
+import { TurnStates, changeTurnPayload } from "../gameInfo/types";
 
 export function initSocketHandler({
   socket,
@@ -28,8 +40,25 @@ export function initSocketHandler({
   });
 
   socket.on(SocketEvents.ON_READY, ({ state }: { state: boolean }) => {
-    console.log("onReady", state);
+    if (state) socket.emit(SocketEvents.LETS_PLAY);
+
     store.dispatch(setIsReady(state));
+  });
+
+  socket.on(SocketEvents.RANDOM_NUMBER, (attemp: IAttemp) => {
+    store.dispatch(setCurrentNumber(attemp));
+    store.dispatch(addMove(attemp));
+  });
+
+  socket.on(SocketEvents.ACTIVATE_YOUR_TURN, (attemp: changeTurnPayload) => {
+    const state = store.getState();
+    const socketId = selectSocketId(state);
+
+    if (attemp.user === socketId) {
+      store.dispatch(changeTurn(attemp.state === TurnStates.PLAY));
+    } else if (attemp.state === TurnStates.WAIT) {
+      store.dispatch(changeTurn(true));
+    }
   });
 
   // handle all Error events

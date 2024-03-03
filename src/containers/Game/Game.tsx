@@ -9,7 +9,7 @@ import withSocket from "@/HOCs/withSocket";
 
 function Game() {
   return (
-    <GameBox>
+    <GameBox component="section" aria-label="game section">
       <Rooms />
       <GamePlay />
     </GameBox>

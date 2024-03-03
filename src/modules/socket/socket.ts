@@ -33,12 +33,13 @@ const socketSlice = createSlice({
   },
   selectors: {
     selectIsConnect: (state) => state.isConnected,
+    selectSocketId: (state) => state.socketId,
   },
 });
 
 export const { initSocket, connectionEstablished, connectionLost } =
   socketSlice.actions;
 
-export const { selectIsConnect } = socketSlice.selectors;
+export const { selectIsConnect, selectSocketId } = socketSlice.selectors;
 
 export default socketSlice.reducer;
