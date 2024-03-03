@@ -15,7 +15,10 @@ const drawLogo = keyframes`
   }
 `;
 
-export const AnimatedIcon = styled("svg")<{ duration?: number }>`
+export const AnimatedIcon = styled("svg")<{
+  infinite?: boolean;
+  duration?: number;
+}>`
   max-width: 100%;
 
   .animatedPath {
@@ -24,7 +27,7 @@ export const AnimatedIcon = styled("svg")<{ duration?: number }>`
     stroke: ${({ theme }) => theme.palette.common.white};
     stroke-dasharray: 187px;
     stroke-dashoffset: 187px;
-    animation: ${drawLogo} ${({ duration = 2 }) => duration}s ease-out 1
-      forwards;
+    animation: ${drawLogo} ${({ duration = 2 }) => duration}s ease-out
+      ${({ infinite }) => (infinite ? `infinite alternate` : `1 forwards`)};
   }
 `;

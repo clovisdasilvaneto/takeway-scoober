@@ -13,6 +13,7 @@ function GamePlay() {
 
   return (
     <GamePlayWrapper>
+      {/* TODO: check for gameover and win */}
       {isReady ? <Match /> : <SelectGameRoom />}
     </GamePlayWrapper>
   );

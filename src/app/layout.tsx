@@ -1,8 +1,8 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import RootProvider from "@/providers/RootProvider";
-import { Box } from "@mui/material";
 import type { Metadata } from "next";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <RootProvider>{children}</RootProvider>
+        <RootProvider>
+          {children}
+          <ToastContainer />
+        </RootProvider>
       </body>
     </html>
   );

@@ -8,10 +8,15 @@ import { Room } from "@/providers/RoomsProvider/types";
 
 interface GameRoomsProps {
   rooms: Room[];
-  onRoomSelected: () => void;
+  onRoomSelected: (room: Room) => void;
+  selectedRoom?: string;
 }
 
-function GameRooms({ rooms, onRoomSelected }: GameRoomsProps) {
+function GameRooms({ selectedRoom, rooms, onRoomSelected }: GameRoomsProps) {
+  const handleRoomSelected = (room: Room) => () => {
+    onRoomSelected(room);
+  };
+
   return (
     <>
       <Typography fontSize={14} paragraph fontWeight={700} color="primary.dark">
@@ -21,9 +26,10 @@ function GameRooms({ rooms, onRoomSelected }: GameRoomsProps) {
       <GameRoomsContainer>
         {rooms.map((room) => (
           <MenuItem
+            selected={selectedRoom === room.name}
             key={`${room.name}-${room.id}`}
             label={room.name}
-            onClick={onRoomSelected}
+            onClick={handleRoomSelected(room)}
           />
         ))}
       </GameRoomsContainer>

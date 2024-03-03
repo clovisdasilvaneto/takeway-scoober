@@ -1,10 +1,16 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import gameInfo from "@/modules/gameInfo";
+import socketMiddleware from "@/modules/socket/socketMiddleware";
+import socketSlice from "@/modules/socket/socket";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       gameInfo,
+      socket: socketSlice,
+    },
+    middleware(getDefaultMiddleware) {
+      return getDefaultMiddleware().concat([socketMiddleware]);
     },
   });
 };

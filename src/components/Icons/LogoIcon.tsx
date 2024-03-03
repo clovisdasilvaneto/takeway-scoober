@@ -7,9 +7,16 @@ import { AnimatedIcon } from "./utils";
 function LogoIcon({
   color = theme.palette.secondary.dark,
   size = 40,
-}: IconProps) {
+  infinite,
+}: IconProps & { infinite?: boolean }) {
   return (
-    <AnimatedIcon width={size} height={size} viewBox={`0 0 40 40`} fill="none">
+    <AnimatedIcon
+      infinite={infinite}
+      width={size}
+      height={size}
+      viewBox={`0 0 40 40`}
+      fill="none"
+    >
       <rect width="40" height="40" rx="20" fill={color} />
 
       <path

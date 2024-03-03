@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 
 import { GameBox } from "./styled";
 import Rooms from "./components/Rooms";
 import GamePlay from "./components/GamePlay";
+import withSocket from "@/HOCs/withSocket";
 
 function Game() {
   return (
@@ -13,4 +16,4 @@ function Game() {
   );
 }
 
-export default Game;
+export default withSocket(Game);

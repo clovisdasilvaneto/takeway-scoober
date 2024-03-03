@@ -1,21 +1,25 @@
-import React from "react";
+"use client";
 
+import { ReactNode } from "react";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 import StoreProvider from "../StoreProvider";
 import ThemeProvider from "../ThemeProvider";
+import { SessionProvider } from "next-auth/react";
 
 interface RootProviderProos {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 function RootProvider({ children }: RootProviderProos) {
   return (
-    <StoreProvider>
-      <AppRouterCacheProvider>
-        <ThemeProvider>{children}</ThemeProvider>
-      </AppRouterCacheProvider>
-    </StoreProvider>
+    <SessionProvider>
+      <StoreProvider>
+        <AppRouterCacheProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </AppRouterCacheProvider>
+      </StoreProvider>
+    </SessionProvider>
   );
 }
 

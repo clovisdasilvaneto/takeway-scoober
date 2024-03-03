@@ -1,8 +1,20 @@
 "use client";
 
-import { Box, styled } from "@mui/material";
+import { Box, Theme, styled } from "@mui/material";
 
-export const MenuItemContainer = styled(Box)`
+const getSelectedStyles = (theme: Theme) => `
+  box-shadow: inset 0 -80px 0 0 ${theme.palette.primary.main};
+
+  p {
+    color: ${theme.palette.common.white};
+  }
+
+  path {
+    fill: ${theme.palette.common.white};
+  }
+`;
+
+export const MenuItemContainer = styled(Box)<{ selected?: boolean }>`
   background: ${({ theme }) => theme.palette.common.white};
   padding: 1.6rem;
   width: 100%;
@@ -19,14 +31,8 @@ export const MenuItemContainer = styled(Box)`
   }
 
   &:hover {
-    box-shadow: inset 0 -80px 0 0 ${({ theme }) => theme.palette.primary.main};
-
-    p {
-      color: ${({ theme }) => theme.palette.common.white};
-    }
-
-    path {
-      fill: ${({ theme }) => theme.palette.common.white};
-    }
+    ${({ theme }) => getSelectedStyles(theme)}
   }
+
+  ${({ selected, theme }) => selected && getSelectedStyles(theme)}
 `;
