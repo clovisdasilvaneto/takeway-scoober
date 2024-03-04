@@ -23,12 +23,10 @@ Here you have some examples about how the game works:
 
 <img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/login.png?raw=true" width="200" />
 
-<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-1.png
-?raw=true" width="200" />
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-1.png?raw=true" width="200" />
 
 
-<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-3.png
-?raw=true" width="200" />
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-3.png?raw=true" width="200" />
 
 <img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-4.png
 ?raw=true" width="200" />
@@ -36,10 +34,10 @@ Here you have some examples about how the game works:
 <img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-5.png
 ?raw=true" width="200" />
 
-<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screenshot-7.png
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-7.png
 ?raw=true" width="200" />
 
-<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screenshot-8.png
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-8.png
 ?raw=true" width="200" />
 
 and more...
