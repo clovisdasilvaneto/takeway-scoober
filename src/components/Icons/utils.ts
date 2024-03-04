@@ -11,8 +11,8 @@ const drawLogo = (color: string) => keyframes`
     stroke-width: 1px;
   }
   to {
-    fill: ${color};    
-    stroke: none;
+    fill: ${color};
+    stroke-dashoffset: 0;
     stroke-width: 0;
   }
 `;
@@ -30,7 +30,7 @@ export const AnimatedIcon = styled("svg")<{
     stroke-dasharray: 187px;
     stroke-dashoffset: 187px;
     animation: ${({ theme }) => drawLogo(theme.palette.common.white)}
-      ${({ duration = 2 }) => duration}s ease-out
+      ${({ duration = 3 }) => duration}s ease-out
       ${({ infinite }) => (infinite ? `infinite alternate` : `1 forwards`)};
   }
 `;
