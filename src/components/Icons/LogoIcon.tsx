@@ -11,7 +11,6 @@ function LogoIcon({
 }: IconProps & { infinite?: boolean }) {
   return (
     <AnimatedIcon
-      color={color}
       infinite={infinite}
       width={size}
       height={size}
