@@ -35,4 +35,9 @@ export const MenuItemContainer = styled(Box)<{ selected?: boolean }>`
   }
 
   ${({ selected, theme }) => selected && getSelectedStyles(theme)}
+
+  @media only screen and (max-width: ${({ theme }) =>
+    theme.breakpoints.values.md}px) {
+    padding: 1rem 0.6rem;
+  }
 `;
