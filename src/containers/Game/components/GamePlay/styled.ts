@@ -4,7 +4,7 @@ import { Box, styled } from "@mui/material";
 import { motion } from "framer-motion";
 
 export const GamePlayWrapper = styled(Box)`
-  max-height: calc(100vh - 9.5rem);
+  max-height: calc(100vh - 9.75rem);
   overflow: hidden;
   position: relative;
   background: ${({ theme }) => theme.palette.common.white};
