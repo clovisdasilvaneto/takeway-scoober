@@ -17,6 +17,8 @@ const Rooms = () => {
   const dispatch = useDispatch();
 
   const onRoomSelected = (room: Room) => {
+    window.scrollTo(0, document.body.scrollHeight);
+
     if (!session.data?.user?.name || selectedRoom) {
       toast.error("Please finish your match before leaving the room.", {
         position: "top-right",
