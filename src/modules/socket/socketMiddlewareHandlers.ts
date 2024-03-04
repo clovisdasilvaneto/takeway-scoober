@@ -45,6 +45,8 @@ export function initSocketHandler({
   socket.on(SocketEvents.ON_READY, ({ state }: { state: boolean }) => {
     if (state) socket.emit(SocketEvents.LETS_PLAY);
 
+    console.log("on ready", state);
+
     store.dispatch<any>(setIsReady(state));
   });
 

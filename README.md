@@ -1,4 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repo is a outcome of the just takeway scoober game challange. 
+
+## Architectural Diagram
+You can find an architectural diagram with user flows and project architecture in the following link: [https://excalidraw.com/#json=cJLZIVA0PO7Doe1PmcFHz,xemJrXdLxQw26QRJm43ZYQ
+](https://excalidraw.com/#json=cJLZIVA0PO7Doe1PmcFHz,xemJrXdLxQw26QRJm43ZYQ)
+
+## Storybook with custom design system
+This projects uses MaterialUI as design system but since we have customized components, a storybook containing these components was created. You can find it here: 
+
+## Screenshots
+You can find screenshots of this project in the [readme-assets folder.](https://github.com/clovisdasilvaneto/takeway-scoober/tree/main/readme-assets)
+
+Here you have some examples about how the game works:
+
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/login.png?raw=true" width="200" />
+
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-1.png
+?raw=true" width="200" />
+
+
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-3.png
+?raw=true" width="200" />
+
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-4.png
+?raw=true" width="200" />
+
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screen-shot-5.png
+?raw=true" width="200" />
+
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screenshot-7.png
+?raw=true" width="200" />
+
+<img src="https://github.com/clovisdasilvaneto/takeway-scoober/blob/main/readme-assets/screenshot-8.png
+?raw=true" width="200" />
+
 
 ## Getting Started
 
@@ -15,22 +49,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

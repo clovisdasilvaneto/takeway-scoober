@@ -25,7 +25,8 @@ function Match() {
   const isMyTurn = useSelector(selectIsMyTurn);
   const onOptionSelected = useMatch(moves, gameContainerRef);
 
-  const isLastMoveFromUser =
+  const isFirstMove = moves.length > 1;
+  const isLastMoveFromRemote =
     moves.length && moves[moves.length - 1].user === session.data?.user?.name;
 
   return (
@@ -61,10 +62,10 @@ function Match() {
           <motion.div
             animate="in"
             initial="out"
-            variants={isLastMoveFromUser ? localAnimation : remoteAnimation}
+            variants={isLastMoveFromRemote ? localAnimation : remoteAnimation}
             transition={{ duration: 0.5 }}
           >
-            <AttempLoading isLocal={!isLastMoveFromUser} />
+            <AttempLoading isLocal={!isLastMoveFromRemote && isFirstMove} />
           </motion.div>
         )}
       </GamePlayContainer>
