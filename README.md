@@ -14,7 +14,7 @@ You can find an architectural diagram with user flows and project architecture i
 and more...
 
 ## Storybook with custom design system
-This projects uses MaterialUI as design system but since we have customized components, a storybook containing these components was created. You can find it here: [https://takeway-scoober.onrender.com](https://takeway-scoober.onrender.com)
+This projects uses MaterialUI as design system but since we have customized components, a storybook containing these components was created. You can find it here: [https://takeway-scoober-storybook.onrender.com](https://takeway-scoober-storybook.onrender.com)
 
 ## Screenshots
 You can find screenshots of this project in the [readme-assets folder.](https://github.com/clovisdasilvaneto/takeway-scoober/tree/main/readme-assets)
