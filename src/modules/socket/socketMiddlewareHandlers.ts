@@ -9,6 +9,7 @@ import {
   connectionEstablished,
   connectionLost,
   selectSocketId,
+  setSocketUser,
 } from "./socket";
 import {
   MiddlewareHandlerParams,
@@ -26,6 +27,8 @@ export function initSocketHandler({
   action,
 }: MiddlewareHandlerParams<initSocketActionPayload, "socket/initSocket">) {
   socket.on(SocketEvents.CONNECT, () => {
+    store.dispatch(setSocketUser(action.payload.username));
+
     socket.emit(SocketEvents.LOGIN, {
       username: action.payload.username,
     });
@@ -42,12 +45,12 @@ export function initSocketHandler({
   socket.on(SocketEvents.ON_READY, ({ state }: { state: boolean }) => {
     if (state) socket.emit(SocketEvents.LETS_PLAY);
 
-    store.dispatch(setIsReady(state));
+    store.dispatch<any>(setIsReady(state));
   });
 
   socket.on(SocketEvents.RANDOM_NUMBER, (attemp: IAttemp) => {
     store.dispatch(setCurrentNumber(attemp));
-    store.dispatch(addMove(attemp));
+    store.dispatch<any>(addMove(attemp));
   });
 
   socket.on(SocketEvents.ACTIVATE_YOUR_TURN, (attemp: changeTurnPayload) => {

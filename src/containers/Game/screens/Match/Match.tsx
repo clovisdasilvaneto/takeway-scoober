@@ -10,6 +10,7 @@ import {
   changeTurn,
   selectCurrentNumber,
   selectIsMyTurn,
+  selectIsOver,
 } from "@/modules/gameInfo/gameInfo";
 import { useSession } from "next-auth/react";
 import AttempLoading from "@/components/Attemp/AttempLoading";
@@ -17,11 +18,14 @@ import AttempLoading from "@/components/Attemp/AttempLoading";
 function Match() {
   const moves = useSelector(selectMoves);
   const currentNumber = useSelector(selectCurrentNumber);
+  const isOver = useSelector(selectIsOver);
   const session = useSession();
   const isMyTurn = useSelector(selectIsMyTurn);
   const dispatch = useDispatch();
 
   const handleSelectedOption = (option: string) => {
+    if (isOver) return;
+
     const selectedNumber = parseInt(option);
 
     dispatch(changeTurn(false));
@@ -53,10 +57,14 @@ function Match() {
           ),
         )}
 
-        {!isMyTurn && <AttempLoading isLocal={!isLastMoveFromUser} />}
+        {!isMyTurn && !isOver && (
+          <AttempLoading isLocal={!isLastMoveFromUser} />
+        )}
       </GamePlayContainer>
 
-      {isMyTurn && <GameOptions onOptionSelected={handleSelectedOption} />}
+      {(isMyTurn || isOver) && (
+        <GameOptions onOptionSelected={handleSelectedOption} />
+      )}
     </>
   );
 }

@@ -5,11 +5,11 @@ import { initSocketActionPayload, onMessageEvent } from "./types";
 export interface SocketState {
   isConnected: boolean;
   socketId?: string;
+  socketUser?: string;
 }
 
 const initialState: SocketState = {
   isConnected: false,
-  socketId: undefined,
 };
 
 // Now create the slice
@@ -30,16 +30,25 @@ const socketSlice = createSlice({
     connectionLost: (state) => {
       state.isConnected = false;
     },
+    setSocketUser: (state, action: PayloadAction<string>) => {
+      state.socketUser = action.payload;
+    },
   },
   selectors: {
     selectIsConnect: (state) => state.isConnected,
     selectSocketId: (state) => state.socketId,
+    selectSocketUser: (state) => state.socketUser,
   },
 });
 
-export const { initSocket, connectionEstablished, connectionLost } =
-  socketSlice.actions;
+export const {
+  initSocket,
+  connectionEstablished,
+  connectionLost,
+  setSocketUser,
+} = socketSlice.actions;
 
-export const { selectIsConnect, selectSocketId } = socketSlice.selectors;
+export const { selectIsConnect, selectSocketId, selectSocketUser } =
+  socketSlice.selectors;
 
 export default socketSlice.reducer;

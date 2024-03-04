@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type { AsyncThunkAction, PayloadAction } from "@reduxjs/toolkit";
 import { IAttemp, sendNumberPayload } from "./types";
 import SocketFactory from "@/services/socket";
 import { SocketEvents } from "../socket/types";
+import { RootState } from "@/store/store";
+import { finishGame } from "../gameInfo/gameInfo";
 
 type gamesMovesSlice = {
   moves: IAttemp[];
@@ -16,9 +18,7 @@ export const gameMovesSlice = createSlice({
   name: "gameMoves",
   initialState,
   reducers: {
-    addMove(state, action: PayloadAction<IAttemp>) {
-      if (action.payload.isFirst && state.moves.length) return;
-
+    _addMove(state, action: PayloadAction<IAttemp>) {
       state.moves.push(action.payload);
     },
     sendMove(
@@ -42,7 +42,25 @@ export const gameMovesSlice = createSlice({
 });
 
 //ACTIONS
-export const { addMove, clearMoves, sendMove } = gameMovesSlice.actions;
+export const { clearMoves, sendMove } = gameMovesSlice.actions;
+
+export const addMove = createAsyncThunk(
+  "data/setIsReady",
+  async (payload: IAttemp, { dispatch, getState }) => {
+    const { gameMoves, gameInfo, socket } = getState() as RootState;
+
+    if ((payload.isFirst && gameMoves.moves.length) || gameInfo.isOver) return;
+
+    if (!payload.isCorrectResult && !payload.isFirst)
+      dispatch(
+        finishGame({
+          isWinner: payload.user !== socket.socketUser,
+        }),
+      );
+
+    dispatch(gameMovesSlice.actions._addMove(payload));
+  },
+);
 
 // SELECTORS
 export const { selectMoves } = gameMovesSlice.selectors;

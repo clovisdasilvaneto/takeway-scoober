@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import FabButon from "../FabButton";
+import { GameOptionsWrapper } from "./styled";
 
 interface GameOptionsProps {
   onOptionSelected: (option: string) => void;
@@ -14,7 +15,7 @@ function GameOptions({ onOptionSelected }: GameOptionsProps) {
   };
 
   return (
-    <Box component="menu" display="flex" justifyContent="center" gap={4}>
+    <GameOptionsWrapper component="menu">
       {options.map((option, index) => (
         <FabButon
           key={`${option}-${index}`}
@@ -22,7 +23,7 @@ function GameOptions({ onOptionSelected }: GameOptionsProps) {
           onClick={handleOptionSelected(option)}
         />
       ))}
-    </Box>
+    </GameOptionsWrapper>
   );
 }
 
