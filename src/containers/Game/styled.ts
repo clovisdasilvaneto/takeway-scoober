@@ -20,6 +20,6 @@ export const GameBox = styled(motion.section)`
   @media only screen and (max-width: ${({ theme }) =>
       theme.breakpoints.values.md}px) {
     grid-template-columns: auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: 230px auto;
   }
 `;

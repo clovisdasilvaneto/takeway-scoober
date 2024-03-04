@@ -2,7 +2,7 @@
 
 import { keyframes, styled } from "@mui/material";
 
-const drawLogo = (color: string) => keyframes`
+const drawLogo = (color: string, strokeColor: string) => keyframes`
   from {
     stroke-dashoffset: 187px;
   }
@@ -12,24 +12,27 @@ const drawLogo = (color: string) => keyframes`
   }
   to {
     fill: ${color};
-    strokeWidth: 0;
+    stroke-width: 1px;
     stroke-dashoffset: 0;
+    stroke: ${strokeColor};
   }
 `;
 
 export const AnimatedIcon = styled("svg")<{
   infinite?: boolean;
   duration?: number;
+  color: string;
 }>`
   max-width: 100%;
 
   path {
     fill: transparent;
-    strokeidthw: 1px;
+    stroke-width: 1px;
     stroke: ${({ theme }) => theme.palette.common.white};
     stroke-dasharray: 187px;
     stroke-dashoffset: 187px;
-    animation: ${({ theme }) => drawLogo(theme.palette.common.white)}
+    animation: ${({ theme, color }) =>
+        drawLogo(theme.palette.common.white, color)}
       ${({ duration = 2 }) => duration}s ease-out
       ${({ infinite }) => (infinite ? `infinite alternate` : `1 forwards`)};
   }
