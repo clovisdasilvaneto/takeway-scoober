@@ -1,8 +1,9 @@
 "use client";
 
-import { Box, styled } from "@mui/material";
+import { styled } from "@mui/material";
+import { motion } from "framer-motion";
 
-export const GameBox = styled(Box)`
+export const GameBox = styled(motion.section)`
   padding: 0 1rem;
   max-width: 1108px;
   margin: 0 auto;

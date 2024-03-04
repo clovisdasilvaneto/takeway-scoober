@@ -2,14 +2,22 @@ import React from "react";
 import { HeaderWrapper } from "./styled";
 import { Box, Typography } from "@mui/material";
 import { LogoIcon } from "../Icons";
+import { createEntranceAnimation } from "@/theme/animations";
 
 interface HeaderProps {
   description: string;
 }
 
+const headerAnimation = createEntranceAnimation("translateY(-3rem)");
+
 function Header({ description }: HeaderProps) {
   return (
-    <HeaderWrapper component="header">
+    <HeaderWrapper
+      aria-label="scoober game header"
+      animate="in"
+      initial="out"
+      variants={headerAnimation}
+    >
       <LogoIcon />
 
       <Box>

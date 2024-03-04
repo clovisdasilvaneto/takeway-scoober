@@ -1,8 +1,9 @@
 "use client";
 
-import { Box, styled } from "@mui/material";
+import { styled } from "@mui/material";
+import { motion } from "framer-motion";
 
-export const FooterWrapper = styled(Box)`
+export const FooterWrapper = styled(motion.footer)`
   padding: 1rem;
   width: 100%;
   background: ${({ theme }) => theme.palette.info.dark};

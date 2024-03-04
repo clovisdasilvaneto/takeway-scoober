@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { AnimatePresence } from "framer-motion";
 
 import StoreProvider from "../StoreProvider";
 import ThemeProvider from "../ThemeProvider";

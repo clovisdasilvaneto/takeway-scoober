@@ -1,71 +1,78 @@
-import React from "react";
+import React, { useRef } from "react";
 import { GamePlayContainer } from "../../components/GamePlay/styled";
 import Attemp from "@/components/Attemp";
 import GameOptions from "@/components/GameOptions/GameOptions";
-import { useDispatch, useSelector } from "react-redux";
-import { selectMoves, sendMove } from "@/modules/gameMoves/gameMoves";
+import { useSelector } from "react-redux";
+import { selectMoves } from "@/modules/gameMoves/gameMoves";
 import { IAttemp } from "@/modules/gameMoves/types";
 import BaseNumber from "./BaseNumber";
-import {
-  changeTurn,
-  selectCurrentNumber,
-  selectIsMyTurn,
-  selectIsOver,
-} from "@/modules/gameInfo/gameInfo";
+import { selectIsMyTurn, selectIsOver } from "@/modules/gameInfo/gameInfo";
 import { useSession } from "next-auth/react";
 import AttempLoading from "@/components/Attemp/AttempLoading";
+import { GamePlayOverflowContainer } from "./styled";
+import useMatch from "@/hooks/useMatch";
+import { createEntranceAnimation } from "@/theme/animations";
+import { motion } from "framer-motion";
+
+const localAnimation = createEntranceAnimation("translateX(-3rem)");
+const remoteAnimation = createEntranceAnimation("translateX(3rem)");
 
 function Match() {
+  const gameContainerRef = useRef<HTMLDivElement>(null);
   const moves = useSelector(selectMoves);
-  const currentNumber = useSelector(selectCurrentNumber);
   const isOver = useSelector(selectIsOver);
   const session = useSession();
   const isMyTurn = useSelector(selectIsMyTurn);
-  const dispatch = useDispatch();
-
-  const handleSelectedOption = (option: string) => {
-    if (isOver) return;
-
-    const selectedNumber = parseInt(option);
-
-    dispatch(changeTurn(false));
-    dispatch(
-      sendMove({
-        selectedNumber,
-        number: currentNumber as number,
-      }),
-    );
-  };
+  const onOptionSelected = useMatch(moves, gameContainerRef);
 
   const isLastMoveFromUser =
     moves.length && moves[moves.length - 1].user === session.data?.user?.name;
 
   return (
-    <>
-      <GamePlayContainer>
+    <GamePlayOverflowContainer>
+      <GamePlayContainer ref={gameContainerRef}>
         {moves.map((move: IAttemp, index) =>
           move.isFirst ? (
             <BaseNumber key={`${move.number}-${index}`} number={move.number} />
           ) : (
-            <Attemp
-              number={moves[index - 1].number}
-              selectedOption={move.selectedNumber}
-              result={move.number}
+            <motion.div
+              animate="in"
+              initial="out"
               key={`${move.number}-${index}`}
-              isLocal={move.user === session.data?.user?.name}
-            />
+              variants={
+                move.user === session.data?.user?.name
+                  ? localAnimation
+                  : remoteAnimation
+              }
+              transition={{ duration: 0.5 }}
+            >
+              <Attemp
+                number={moves[index - 1].number}
+                key={`${move.number}-${index}`}
+                selectedOption={move.selectedNumber}
+                result={move.number}
+                isLocal={move.user === session.data?.user?.name}
+              />
+            </motion.div>
           ),
         )}
 
         {!isMyTurn && !isOver && (
-          <AttempLoading isLocal={!isLastMoveFromUser} />
+          <motion.div
+            animate="in"
+            initial="out"
+            variants={isLastMoveFromUser ? localAnimation : remoteAnimation}
+            transition={{ duration: 0.5 }}
+          >
+            <AttempLoading isLocal={!isLastMoveFromUser} />
+          </motion.div>
         )}
       </GamePlayContainer>
 
       {(isMyTurn || isOver) && (
-        <GameOptions onOptionSelected={handleSelectedOption} />
+        <GameOptions onOptionSelected={onOptionSelected} />
       )}
-    </>
+    </GamePlayOverflowContainer>
   );
 }
 

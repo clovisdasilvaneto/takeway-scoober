@@ -1,6 +1,7 @@
 import { Box, Button, styled } from "@mui/material";
+import { motion } from "framer-motion";
 
-export const EndGameWrapper = styled(Box)`
+export const EndGameWrapper = styled(motion.div)`
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;

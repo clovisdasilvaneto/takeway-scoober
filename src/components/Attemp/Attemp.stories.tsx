@@ -23,11 +23,17 @@ type Story = StoryObj<typeof meta>;
 export const Local: Story = {
   args: {
     isLocal: true,
+    selectedOption: -1,
+    number: 10,
+    result: 3,
   },
 };
 
 export const Remote: Story = {
   args: {
     isLocal: false,
+    selectedOption: -1,
+    number: 10,
+    result: 3,
   },
 };

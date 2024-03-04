@@ -1,19 +1,27 @@
 import { selectIsWinner } from "@/modules/gameInfo/gameInfo";
-import { Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { EndGameButton, EndGameWrapper } from "./styled";
 import useNewGame from "@/hooks/useNewGame";
+import { YouLose, YouWin } from "./variants";
+import { createEntranceAnimation } from "@/theme/animations";
+
+const endGameAnimation = createEntranceAnimation("");
 
 function EndGame() {
   const isWinner = useSelector(selectIsWinner);
   const startNewGame = useNewGame();
 
   return (
-    <EndGameWrapper>
-      <Typography variant="h3" fontWeight={700} color="common.white">
-        You {isWinner ? "won" : "lose"}
-      </Typography>
+    <EndGameWrapper
+      animate="in"
+      initial="out"
+      key="is-over"
+      exit="out"
+      variants={endGameAnimation}
+    >
+      {isWinner ? <YouWin /> : <YouLose />}
+
       <EndGameButton
         size="large"
         onClick={startNewGame}

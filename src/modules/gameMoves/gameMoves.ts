@@ -48,15 +48,20 @@ export const addMove = createAsyncThunk(
   "data/setIsReady",
   async (payload: IAttemp, { dispatch, getState }) => {
     const { gameInfo, socket } = getState() as RootState;
+    const isLastNumber = payload.number === 1;
+    const hasIncorrectResult = !payload.isCorrectResult && !payload.isFirst;
+    const isLocalAttemp = payload.user === socket.socketUser;
 
     if (payload.isFirst) dispatch(gameMovesSlice.actions.clearMoves());
 
     if (gameInfo.isOver) return;
 
-    if (!payload.isCorrectResult && !payload.isFirst)
+    if (hasIncorrectResult || isLastNumber)
       dispatch(
         finishGame({
-          isWinner: payload.user !== socket.socketUser,
+          isWinner:
+            (!isLocalAttemp && hasIncorrectResult) ||
+            (isLocalAttemp && isLastNumber),
         }),
       );
 

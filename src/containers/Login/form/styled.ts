@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Box, styled } from "@mui/material";
 
 export const LoginBox = styled(Box)`
@@ -12,4 +13,8 @@ export const LoginBox = styled(Box)`
   margin: 0 auto;
   width: 100%;
   max-width: min(70vw, 600px);
+`;
+
+export const InputBox = styled(motion.div)`
+  width: 100%;
 `;

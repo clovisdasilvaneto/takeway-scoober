@@ -5,6 +5,10 @@ import { GameRoomsContainer } from "./styled";
 import MenuItem from "../MenuItem";
 import { Typography } from "@mui/material";
 import { Room } from "@/providers/RoomsProvider/types";
+import { createEntranceAnimation } from "@/theme/animations";
+import { motion } from "framer-motion";
+
+const roomItemAnimation = createEntranceAnimation("translateX(-2rem)");
 
 interface GameRoomsProps {
   rooms: Room[];
@@ -22,15 +26,21 @@ function GameRooms({ selectedRoom, rooms, onRoomSelected }: GameRoomsProps) {
       <Typography fontSize={14} paragraph fontWeight={700} color="primary.dark">
         Choose your game room
       </Typography>
-
       <GameRoomsContainer>
-        {rooms.map((room) => (
-          <MenuItem
-            selected={selectedRoom === room.name}
+        {rooms.map((room, index) => (
+          <motion.div
             key={`${room.name}-${room.id}`}
-            label={room.name}
-            onClick={handleRoomSelected(room)}
-          />
+            animate="in"
+            initial="out"
+            transition={{ delay: (index ? index / 3 : index) + 0.3 }}
+            variants={roomItemAnimation}
+          >
+            <MenuItem
+              selected={selectedRoom === room.name}
+              label={room.name}
+              onClick={handleRoomSelected(room)}
+            />
+          </motion.div>
         ))}
       </GameRoomsContainer>
     </>

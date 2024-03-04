@@ -1,4 +1,4 @@
-import { Typography, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 
 export const MatchBaseNumber = styled(Typography)<{ component: string }>`
   position: absolute;
@@ -6,4 +6,11 @@ export const MatchBaseNumber = styled(Typography)<{ component: string }>`
   left: 0;
   width: 100%;
   text-align: center;
+`;
+
+export const GamePlayOverflowContainer = styled(Box)`
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `;

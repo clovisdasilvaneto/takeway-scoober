@@ -1,5 +1,6 @@
 import { LogoIcon } from "@/components/Icons";
 import { selectRoom } from "@/modules/gameInfo/gameInfo";
+import { createEntranceAnimation } from "@/theme/animations";
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";

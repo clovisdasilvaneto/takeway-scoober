@@ -1,28 +1,31 @@
 "use client";
 
 import { Box, styled } from "@mui/material";
+import { motion } from "framer-motion";
 
 export const GamePlayWrapper = styled(Box)`
-  padding: 2rem;
-  display: flex;
+  max-height: calc(100vh - 9.5rem);
+  overflow: hidden;
   position: relative;
-  justify-content: space-between;
-  flex-direction: column;
   background: ${({ theme }) => theme.palette.common.white};
 `;
 
 export const GamePlayContainer = styled(Box)`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  flex-direction: column;
+  display: block;
   padding-bottom: 4rem;
   position: relative;
-  gap: 1rem;
   z-index: 1;
+  height: calc(100vh - 19rem);
+  overflow-x: hidden;
+  overflow-y: auto;
 
-  @media only screen and (max-width: ${({ theme }) =>
-      theme.breakpoints.values.md}px) {
-    gap: 3rem;
+  > div {
+    margin-top: 2rem;
   }
+`;
+
+export const GamePlayEndSelectRoom = styled(motion.div)`
+  position: absolute;
+  width: 100%;
+  top: 2rem;
 `;

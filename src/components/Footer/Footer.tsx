@@ -3,10 +3,18 @@ import { Box, Typography } from "@mui/material";
 
 import { FooterWrapper } from "./styled";
 import JustTakeAwayIcon from "../Icons/JustTakeAwayIcon";
+import { createEntranceAnimation } from "@/theme/animations";
+
+const footerAnimation = createEntranceAnimation("translateY(3rem)");
 
 function Footer() {
   return (
-    <FooterWrapper component="footer">
+    <FooterWrapper
+      aria-label="scoober game footer"
+      animate="in"
+      initial="out"
+      variants={footerAnimation}
+    >
       <JustTakeAwayIcon />
 
       <Box display="flex" alignItems="center" gap={10}>
