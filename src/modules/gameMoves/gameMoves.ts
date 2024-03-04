@@ -47,9 +47,11 @@ export const { clearMoves, sendMove } = gameMovesSlice.actions;
 export const addMove = createAsyncThunk(
   "data/setIsReady",
   async (payload: IAttemp, { dispatch, getState }) => {
-    const { gameMoves, gameInfo, socket } = getState() as RootState;
+    const { gameInfo, socket } = getState() as RootState;
 
-    if ((payload.isFirst && gameMoves.moves.length) || gameInfo.isOver) return;
+    if (payload.isFirst) dispatch(gameMovesSlice.actions.clearMoves());
+
+    if (gameInfo.isOver) return;
 
     if (!payload.isCorrectResult && !payload.isFirst)
       dispatch(
