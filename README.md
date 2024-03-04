@@ -1,4 +1,4 @@
-This repo is a outcome of the just takeway scoober game challange. You can access the [online project here](https://takeway-client.onrender.com/login)
+This repo is a outcome of the just takeway scoober game challange. You can access the [online project here](https://takeway-scoober.onrender.com/login)
 
 ## Architectural Diagram
 You can find an architectural diagram with user flows and project architecture in the following link: [https://excalidraw.com/#json=cJLZIVA0PO7Doe1PmcFHz,xemJrXdLxQw26QRJm43ZYQ
